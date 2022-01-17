@@ -1,13 +1,13 @@
-package com.apusia.library.menumain;
+package com.apusia.library.main;
 
-public class MenuMainView {
-    private static MenuMainView instance = new MenuMainView();
+public class MainView {
+    private static MainView instance = new MainView();
 
-    private MenuMainView() {
+    private MainView() {
     }
 
-    static MenuMainView getInstance(){
-        return MenuMainView.instance;
+    static MainView getInstance(){
+        return MainView.instance;
     }
 
     public void print(){
