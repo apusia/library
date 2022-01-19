@@ -15,4 +15,8 @@ public class BookRepository {
     void add(Book book){
         books.add(book);
     }
+
+    ArrayList<Book> get(){
+        return books;
+    }
 }

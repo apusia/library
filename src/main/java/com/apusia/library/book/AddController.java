@@ -1,20 +1,55 @@
 package com.apusia.library.book;
 
 import com.apusia.library.Flow;
+import com.apusia.library.main.MainController;
+
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class AddController implements Flow {
     private static AddController instance = new AddController();
+    private BookRepository bookRepository = BookRepository.getInstance();
+    private Scanner keyboard = new Scanner(System.in);
 
-    private AddController(){
+
+    private AddController() {
     }
 
-    public static AddController getInstance(){
+    public static AddController getInstance() {
         return instance;
     }
 
     @Override
     public void flow() {
-//        new Book("1", Book.Status.FREE, "Inni","S.King");
-
+        String author = getAuthor();
+        String title = getTitle();
+        bookRepository.add(new Book(Book.Status.FREE, author, title));
+        MainController.getInstance().flow();
     }
+
+    private String getAuthor() {
+        System.out.println("Proszę podać autora książki:");
+        String author = keyboard.nextLine();
+        if (checkIfEmpty(author)) {
+            System.out.println("Proszę wpisać 1 znak");
+            getAuthor();
+        }
+        return author;
+    }
+
+    private String getTitle() {
+        System.out.println("Proszę podać tytuł książki:");
+        String title = keyboard.nextLine();
+        if (checkIfEmpty(title)) {
+            System.out.println("Proszę wpisać 1 znak");
+            getTitle();
+        }
+        return title;
+    }
+
+    private boolean checkIfEmpty(String text) {
+        return text.length() < 1;
+    }
+
+
 }
