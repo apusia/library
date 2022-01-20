@@ -11,6 +11,17 @@ public class Book {
         this.author = author;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
 
     enum Status {
         RESERVED,
