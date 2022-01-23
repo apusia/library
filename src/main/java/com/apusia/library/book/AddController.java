@@ -3,24 +3,27 @@ package com.apusia.library.book;
 import com.apusia.library.Flow;
 import com.apusia.library.main.MainController;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class AddController implements Flow {
-    private static AddController instance = new AddController();
+    private static AddController instance = null;
     private BookRepository bookRepository = BookRepository.getInstance();
     private Scanner keyboard = new Scanner(System.in);
 
 
-    private AddController() {
+    private AddController() throws IOException {
     }
 
-    public static AddController getInstance() {
+    public static AddController getInstance() throws IOException {
+        if( instance == null ){
+            instance = new AddController();
+        }
         return instance;
     }
 
     @Override
-    public void flow() {
+    public void flow() throws IOException {
         String author = getAuthor();
         String title = getTitle();
         bookRepository.add(new Book(Book.Status.FREE, author, title));
@@ -50,6 +53,4 @@ public class AddController implements Flow {
     private boolean checkIfEmpty(String text) {
         return text.length() < 1;
     }
-
-
 }

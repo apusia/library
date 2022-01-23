@@ -5,6 +5,7 @@ import com.apusia.library.book.AddController;
 import com.apusia.library.book.DeleteController;
 import com.apusia.library.book.PreviewController;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class MainController implements Flow {
@@ -21,7 +22,7 @@ public class MainController implements Flow {
     }
 
     @Override
-    public void flow() {
+    public void flow() throws IOException {
         view.print();
         String input = keyboard.nextLine().toLowerCase();
         if (input.length() != 1) {
