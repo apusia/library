@@ -1,11 +1,14 @@
 package com.apusia.library;
 
-import com.apusia.library.main.MainController;
+import com.apusia.library.input.DataInputContext;
+import com.apusia.library.input.ScannerDataInput;
+import com.apusia.library.mainmenu.MainMenuController;
 
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        MainController.getInstance().flow();
+        DataInputContext.register(new ScannerDataInput());
+        MainMenuController.getInstance().flow();
     }
 }

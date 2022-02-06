@@ -4,7 +4,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class StorageHelper {
-    private static final String STORAGE_PATH = "/Users/paulinaniedzialek/Desktop/Projekty IDEA/library/storage/";
+    private static final String STORAGE_PATH = "/Volumes/Dane/Projekty/library/storage/";
 
     public FileWriter getFile(Storage storage) throws IOException {
         return new FileWriter(STORAGE_PATH + storage.filename, true);
@@ -13,7 +13,7 @@ public class StorageHelper {
     public enum Storage {
         BOOKS("books.txt");
 
-        String filename;
+        final String filename;
 
         Storage(String filename) {
             this.filename = filename;

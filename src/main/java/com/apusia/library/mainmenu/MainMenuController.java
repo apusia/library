@@ -1,30 +1,30 @@
-package com.apusia.library.main;
+package com.apusia.library.mainmenu;
 
 import com.apusia.library.Flow;
 import com.apusia.library.book.AddController;
 import com.apusia.library.book.DeleteController;
 import com.apusia.library.book.PreviewController;
+import com.apusia.library.input.DataInputContext;
 
 import java.io.IOException;
-import java.util.Scanner;
 
-public class MainController implements Flow {
-    private static MainController instance = new MainController();
-    private MainView view = MainView.getInstance();
+import static com.apusia.library.input.DataInputContext.getDataInput;
 
-    private Scanner keyboard = new Scanner(System.in);
+public class MainMenuController implements Flow {
+    private static final MainMenuController instance = new MainMenuController();
+    private final MainView view = MainView.getInstance();
 
-    private MainController() {
+    private MainMenuController() {
     }
 
-    public static MainController getInstance() {
-        return MainController.instance;
+    public static MainMenuController getInstance() {
+        return MainMenuController.instance;
     }
 
     @Override
     public void flow() throws IOException {
         view.print();
-        String input = keyboard.nextLine().toLowerCase();
+        String input = getDataInput().nextLine().toLowerCase();
         if (input.length() != 1) {
             System.out.println("Proszę wpisać 1 znak");
             flow();
@@ -46,7 +46,5 @@ public class MainController implements Flow {
             default:
                 flow();
         }
-
-        input.toString();
     }
 }

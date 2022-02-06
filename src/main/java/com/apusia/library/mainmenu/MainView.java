@@ -1,7 +1,7 @@
-package com.apusia.library.main;
+package com.apusia.library.mainmenu;
 
 public class MainView {
-    private static MainView instance = new MainView();
+    private static final MainView instance = new MainView();
 
     private MainView() {
     }

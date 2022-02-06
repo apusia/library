@@ -1,16 +1,16 @@
 package com.apusia.library.book;
 
 import com.apusia.library.Flow;
-import com.apusia.library.main.MainController;
+import com.apusia.library.mainmenu.MainMenuController;
 
 import java.io.IOException;
 import java.util.Scanner;
 
+import static com.apusia.library.input.DataInputContext.getDataInput;
+
 public class AddController implements Flow {
     private static AddController instance = null;
-    private BookRepository bookRepository = BookRepository.getInstance();
-    private Scanner keyboard = new Scanner(System.in);
-
+    private final BookRepository bookRepository = BookRepository.getInstance();
 
     private AddController() throws IOException {
     }
@@ -27,12 +27,12 @@ public class AddController implements Flow {
         String author = getAuthor();
         String title = getTitle();
         bookRepository.add(new Book(Book.Status.FREE, author, title));
-        MainController.getInstance().flow();
+        MainMenuController.getInstance().flow();
     }
 
     private String getAuthor() {
         System.out.println("Proszę podać autora książki:");
-        String author = keyboard.nextLine();
+        String author = getDataInput().nextLine();
         if (checkIfEmpty(author)) {
             System.out.println("Proszę wpisać 1 znak");
             getAuthor();
@@ -42,7 +42,7 @@ public class AddController implements Flow {
 
     private String getTitle() {
         System.out.println("Proszę podać tytuł książki:");
-        String title = keyboard.nextLine();
+        String title = getDataInput().nextLine();
         if (checkIfEmpty(title)) {
             System.out.println("Proszę wpisać 1 znak");
             getTitle();
