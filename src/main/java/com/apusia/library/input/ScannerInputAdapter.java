@@ -2,7 +2,7 @@ package com.apusia.library.input;
 
 import java.util.Scanner;
 
-public class ScannerDataInput implements DataInput {
+public class ScannerInputAdapter implements InputAdapter {
     private static final Scanner keyboard = new Scanner(System.in);
 
     @Override

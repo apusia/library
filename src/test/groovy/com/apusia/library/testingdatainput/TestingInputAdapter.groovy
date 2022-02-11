@@ -1,15 +1,18 @@
 package com.apusia.library.testingdatainput
 
-import com.apusia.library.input.DataInput
+import com.apusia.library.input.InputAdapter
 
-class TestingDataInput implements DataInput {
+class TestingInputAdapter implements InputAdapter {
+    // FIFO
     private final LinkedList<String> data = new LinkedList<>()
     
-    TestingDataInput() {
+    TestingInputAdapter() {
     }
     
     void addData(String... data) {
-        this.data.addAll(Arrays.asList(data))
+        def stringArray = data
+        def stringArrayList = Arrays.asList(stringArray)
+        this.data.addAll(stringArrayList)
     }
     
     @Override

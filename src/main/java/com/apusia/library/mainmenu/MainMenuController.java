@@ -4,11 +4,11 @@ import com.apusia.library.Flow;
 import com.apusia.library.book.AddController;
 import com.apusia.library.book.DeleteController;
 import com.apusia.library.book.PreviewController;
-import com.apusia.library.input.DataInputContext;
+import com.apusia.library.input.ScannerInputAdapter;
 
 import java.io.IOException;
 
-import static com.apusia.library.input.DataInputContext.getDataInput;
+import static com.apusia.library.input.InputContext.getInput;
 
 public class MainMenuController implements Flow {
     private static final MainMenuController instance = new MainMenuController();
@@ -24,27 +24,18 @@ public class MainMenuController implements Flow {
     @Override
     public void flow() throws IOException {
         view.print();
-        String input = getDataInput().nextLine().toLowerCase();
+        String input = getInput().nextLine().toLowerCase();
         if (input.length() != 1) {
             System.out.println("Proszę wpisać 1 znak");
             flow();
         }
 
         switch (input) {
-            case "1":
-                PreviewController.getInstance().flow();
-                break;
-            case "2":
-                AddController.getInstance().flow();
-                break;
-            case "3":
-                DeleteController.getInstance().flow();
-                break;
-            case "q":
-                System.exit(0);
-                break;
-            default:
-                flow();
+            case "1" -> PreviewController.getInstance().flow();
+            case "2" -> AddController.getInstance().flow();
+            case "3" -> DeleteController.getInstance().flow();
+            case "q" -> System.exit(0);
+            default -> flow();
         }
     }
 }

@@ -1,5 +1,5 @@
 package com.apusia.library.input;
 
-public interface DataInput {
+public interface InputAdapter {
     String nextLine();
 }

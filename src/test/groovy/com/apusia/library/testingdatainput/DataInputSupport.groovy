@@ -1,11 +1,10 @@
 package com.apusia.library.testingdatainput
 
-import com.apusia.library.input.DataInputContext
+import com.apusia.library.input.InputContext
 
 trait DataInputSupport {
-    static final TestingDataInput testDataInput = new TestingDataInput()
+    static final TestingInputAdapter testInput = new TestingInputAdapter()
     static {
-        DataInputContext.register(testDataInput)
+        InputContext.register(testInput)
     }
-    
 }
