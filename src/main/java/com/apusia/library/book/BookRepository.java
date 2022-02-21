@@ -1,6 +1,6 @@
 package com.apusia.library.book;
 
-import com.apusia.library.StorageHelper;
+import com.apusia.library.helper.Storage;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -13,7 +13,7 @@ public class BookRepository {
     private static BookRepository instance = null;
 
     /* STORAGE */
-    private final PrintWriter booksStorage = new PrintWriter(new StorageHelper().getFile(StorageHelper.Storage.BOOKS));
+    private final PrintWriter booksStorage = new PrintWriter(Storage.BOOKS.getFileWriter());
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     /* MEMORY */
